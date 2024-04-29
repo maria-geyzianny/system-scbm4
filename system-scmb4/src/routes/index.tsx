@@ -9,9 +9,13 @@ export const AppRoutes = () => {
       <Route
         path="/cadastro-projetos"
         element={
-          <Button variant="contained" color="primary" onClick={toggleTheme}>
-            Alterando o tema
-          </Button>
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <div style={{ marginLeft: "auto" }}>
+              <Button variant="contained" color="primary" onClick={toggleTheme}>
+                Alterando o tema
+              </Button>
+            </div>
+          </div>
         }
       />
       <Route path="*" element={<Navigate to="/cadastro-projetos" />} />
