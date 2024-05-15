@@ -5,22 +5,22 @@ import { PlanoDeFundo } from "../../../assets";
 import Image from "next/image";
 
 interface FormInputs {
-  nome: string;
-  sobrenome: string;
-  email: string;
-  senha: string;
+  projeto: string;
   endereco: string;
-  telefone: string;
+  tipoEdificacao: string;
+  areaProjeto: string;
+  etapaProjeto: string;
+  objetivoProjeto: string;
 }
 
 const Formulario: React.FC = () => {
   const [inputs, setInputs] = useState<FormInputs>({
-    nome: "",
-    sobrenome: "",
-    email: "",
-    senha: "",
+    projeto: "",
     endereco: "",
-    telefone: "",
+    tipoEdificacao: "",
+    areaProjeto: "",
+    etapaProjeto: "",
+    objetivoProjeto: "",
   });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -33,64 +33,79 @@ const Formulario: React.FC = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Faça o que quiser com os dados do formulário
     console.log(inputs);
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
       <form
         onSubmit={handleSubmit}
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: "2rem",
-          width: "80%",
+          gap: "1rem",
+          width: "70%",
         }}
       >
+        <h1
+          style={{
+            fontSize: "2rem",
+            fontFamily: "serif",
+            color: "#4d4b4b",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          Identificações do Projeto a ser Avaliado:
+        </h1>
+
         <TextField
           fullWidth
-          label="Nome"
-          name="nome"
-          value={inputs.nome}
+          label="Nome do projeto:"
+          name="projeto"
+          value={inputs.projeto}
           onChange={handleChange}
         />
         <TextField
           fullWidth
-          label="Sobrenome"
-          name="sobrenome"
-          value={inputs.sobrenome}
-          onChange={handleChange}
-        />
-        <TextField
-          fullWidth
-          label="Email"
-          name="email"
-          type="email"
-          value={inputs.email}
-          onChange={handleChange}
-        />
-        <TextField
-          fullWidth
-          label="Senha"
-          name="senha"
-          type="password"
-          value={inputs.senha}
-          onChange={handleChange}
-        />
-        <TextField
-          fullWidth
-          label="Endereço"
+          label="Endereço do projeto:"
           name="endereco"
           value={inputs.endereco}
           onChange={handleChange}
         />
         <TextField
           fullWidth
-          label="Telefone"
-          name="telefone"
-          type="tel"
-          value={inputs.telefone}
+          label="Tipo de edificação:"
+          name="tipoEdificacao"
+          value={inputs.tipoEdificacao}
+          onChange={handleChange}
+        />
+        <TextField
+          fullWidth
+          label="Area do projeto (m3)"
+          name="areaProjeto"
+          value={inputs.areaProjeto}
+          onChange={handleChange}
+        />
+        <TextField
+          fullWidth
+          label="Etapa atual do projeto"
+          name="etapaProjeto"
+          value={inputs.etapaProjeto}
+          onChange={handleChange}
+        />
+        <TextField
+          fullWidth
+          label="Objetivos do Projeto:"
+          name="objetivoProjeto"
+          value={inputs.objetivoProjeto}
           onChange={handleChange}
           sx={{}}
         />
