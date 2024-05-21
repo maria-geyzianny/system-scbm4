@@ -12,6 +12,8 @@ import {
   Icon,
 } from "@mui/material";
 
+import { Link } from "react-router-dom";
+
 export const MenuLateral: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -58,11 +60,20 @@ export const MenuLateral: React.FC<{ children: React.ReactNode }> = ({
                 <ListItemText primary="Cadastrar Gerente" />
               </ListItemButton>
               {/* add projeto  */}
+              <Link to="formulario">
+                <ListItemButton>
+                  <ListItemIcon>
+                    <Icon>addchart</Icon>
+                  </ListItemIcon>
+                  <ListItemText primary="Cadastrar Projeto" />
+                </ListItemButton>
+              </Link>
+              {/* add prioridades  */}
               <ListItemButton>
                 <ListItemIcon>
-                  <Icon>addchart</Icon>
+                  <Icon>checklist</Icon>
                 </ListItemIcon>
-                <ListItemText primary="Cadastrar Projeto" />
+                <ListItemText primary="Elencar Prioridades" />
               </ListItemButton>
               {/* Resultados */}
               <ListItemButton>
