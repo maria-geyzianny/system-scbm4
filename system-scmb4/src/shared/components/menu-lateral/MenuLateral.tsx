@@ -1,4 +1,5 @@
 import { Height } from "@mui/icons-material";
+import Footer from "../footer";
 import {
   Avatar,
   Box,
@@ -117,6 +118,7 @@ export const MenuLateral: React.FC<{ children: React.ReactNode }> = ({
       <Box height="100vh" marginLeft={theme.spacing(28)}>
         {children}
       </Box>
+      <Footer />
     </>
   );
 };

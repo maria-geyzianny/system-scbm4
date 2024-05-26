@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Footer from "../footer";
 import {
   Typography,
   Grid,
