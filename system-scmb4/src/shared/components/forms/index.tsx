@@ -1,7 +1,13 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
 import { PlanoDeFundo } from "../../../assets";
+import { SelectChangeEvent } from "@mui/material/Select";
+
 import Image from "next/image";
 
 interface FormInputs {
@@ -23,17 +29,27 @@ const Formulario: React.FC = () => {
     objetivoProjeto: "",
   });
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>
+  ) => {
     const { name, value } = event.target;
     setInputs((prevInputs) => ({
       ...prevInputs,
-      [name]: value,
+      [name as string]: value,
     }));
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(inputs);
+  };
+
+  const handleSelectChange = (event: SelectChangeEvent) => {
+    const { name, value } = event.target;
+    setInputs((prevInputs) => ({
+      ...prevInputs,
+      [name as string]: value,
+    }));
   };
 
   return (
@@ -89,25 +105,31 @@ const Formulario: React.FC = () => {
         />
         <TextField
           fullWidth
-          label="Area do projeto (m3)"
+          label="Área do projeto (m²)"
           name="areaProjeto"
           value={inputs.areaProjeto}
           onChange={handleChange}
         />
-        <TextField
-          fullWidth
-          label="Etapa atual do projeto"
-          name="etapaProjeto"
-          value={inputs.etapaProjeto}
-          onChange={handleChange}
-        />
+        <FormControl fullWidth>
+          <InputLabel>Etapa atual do projeto</InputLabel>
+          <Select
+            name="etapaProjeto"
+            value={inputs.etapaProjeto}
+            onChange={handleSelectChange}
+          >
+            <MenuItem value="Design e Planejamento">
+              Design e Planejamento
+            </MenuItem>
+            <MenuItem value="Construção">Construção</MenuItem>
+            <MenuItem value="Pós-construção">Pós-construção</MenuItem>
+          </Select>
+        </FormControl>
         <TextField
           fullWidth
           label="Objetivos do Projeto:"
           name="objetivoProjeto"
           value={inputs.objetivoProjeto}
           onChange={handleChange}
-          sx={{}}
         />
         <Button type="submit" variant="contained" color="primary">
           Enviar
