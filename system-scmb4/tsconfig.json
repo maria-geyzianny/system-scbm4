@@ -21,6 +21,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    "src/shared/components/rankingP" // Add the correct file path here
   ]
 }

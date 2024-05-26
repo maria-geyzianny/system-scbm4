@@ -35,10 +35,10 @@ export const MenuLateral: React.FC<{ children: React.ReactNode }> = ({
             justifyContent="center"
           >
             <Avatar
-              sx={{ height: theme.spacing(18), width: theme.spacing(12) }}
+              sx={{ height: theme.spacing(18), width: theme.spacing(25) }}
               variant="square"
               alt="Logo da UFPE"
-              src="https://upload.wikimedia.org/wikipedia/commons/8/85/Bras%C3%A3o_da_UFPE.png"
+              src="../logoufpe.png"
             ></Avatar>
           </Box>
 
