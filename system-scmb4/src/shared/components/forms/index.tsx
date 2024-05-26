@@ -7,7 +7,6 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import { PlanoDeFundo } from "../../../assets";
 import { SelectChangeEvent } from "@mui/material/Select";
-
 import Image from "next/image";
 
 interface FormInputs {
@@ -59,6 +58,9 @@ const Formulario: React.FC = () => {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
+        backgroundImage: `url(${PlanoDeFundo})`, // Defina a imagem de plano de fundo aqui
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <form
@@ -68,6 +70,9 @@ const Formulario: React.FC = () => {
           flexDirection: "column",
           gap: "1rem",
           width: "70%",
+          backgroundColor: "rgba(255, 255, 255, 0.8)", // Adicione um fundo semi-transparente para melhor legibilidade do formulário
+          padding: "2rem", // Adicione preenchimento para espaçamento interno
+          borderRadius: "8px", // Adicione bordas arredondadas ao formulário
         }}
       >
         <h1
@@ -77,6 +82,7 @@ const Formulario: React.FC = () => {
             color: "#4d4b4b",
             display: "flex",
             justifyContent: "center",
+            textAlign: "center", // Centralize o título
           }}
         >
           Identificações do Projeto a ser Avaliado:
