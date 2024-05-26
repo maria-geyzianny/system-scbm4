@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Footer from "../footer";
+import { PlanoDeFundo } from "../../../assets";
 import {
   Typography,
   Grid,
@@ -87,6 +87,9 @@ const ProjectPage = () => {
         alignItems: "center",
         flexDirection: "column",
         height: "100vh",
+        backgroundImage: `url(${PlanoDeFundo})`, // Defina a imagem de plano de fundo aqui
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <Typography
@@ -94,21 +97,25 @@ const ProjectPage = () => {
           fontSize: "2rem",
           fontFamily: "serif",
           color: "#4d4b4b",
-          marginLeft: "-70%",
+          display: "flex",
+          justifyContent: "center",
+          textAlign: "center",
         }}
       >
         Organize em ordem de importância os atributos importantes para o projeto
       </Typography>
+
       <Grid
         container
         spacing={2}
         style={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           gap: "1rem",
-          width: "150%",
-          marginTop: "50px",
-          marginRight: "20%",
+          width: "70%",
+          backgroundColor: "rgba(255, 255, 255, 0.8)", // Adicione um fundo semi-transparente para melhor legibilidade do formulário
+          padding: "2rem", // Adicione preenchimento para espaçamento interno
+          borderRadius: "8px", // Adicione bordas arredondadas ao formulário
         }}
       >
         {categories.map((category, index) => (
@@ -138,8 +145,8 @@ const ProjectPage = () => {
 
       <div
         style={{
-          padding: "20px",
-          width: "168%",
+          width: "70%",
+          marginBottom: "20px",
         }}
       >
         <Typography variant="subtitle1" gutterBottom align="left">
@@ -151,7 +158,7 @@ const ProjectPage = () => {
         container
         spacing={3}
         justifyContent="center"
-        style={{ marginTop: "20px" }}
+        style={{ marginBottom: "20px" }}
       >
         <Grid item>
           <Button variant="contained" color="primary" onClick={handleSubmit}>

@@ -11,7 +11,7 @@ export const AppRoutes = () => {
       <Route
         path="/cadastro-projetos"
         element={
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <div style={{ justifyContent: "flex-end" }}>
             <div style={{ marginLeft: "auto" }}>
               {/* <Button variant="contained" color="primary" onClick={toggleTheme}>
                 Alterando o tema
