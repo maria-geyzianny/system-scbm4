@@ -49,21 +49,33 @@ const categories = [
     ],
   },
 ];
-type PriorityState = Record<string, string>;
+
+type PriorityState = Record<string, string[]>;
 
 const ProjectPage = () => {
   const [priorities, setPriorities] = useState<PriorityState>({});
 
-  const handlePriorityChange = (category: string, priority: string) => {
-    setPriorities((prevState) => {
-      const updatedPriorities = { ...prevState };
-      updatedPriorities[category] = priority;
-      return updatedPriorities;
-    });
+  const handlePriorityChange = (
+    category: string,
+    selectedOptions: string[]
+  ) => {
+    setPriorities((prevState) => ({
+      ...prevState,
+      [category]: selectedOptions,
+    }));
   };
 
   const handleSubmit = () => {
     console.log("Priorities:", priorities);
+  };
+
+  const handleClearPriorities = () => {
+    setPriorities({});
+  };
+
+  const renderRanking = () => {
+    const selectedItems = Object.values(priorities).flat();
+    return selectedItems.map((item, index) => <li key={index}>{item}</li>);
   };
 
   return (
@@ -103,12 +115,15 @@ const ProjectPage = () => {
             <FormControl fullWidth>
               <InputLabel>{category.title}</InputLabel>
               <Select
-                value={priorities[category.title] || ""}
+                multiple
+                value={priorities[category.title] || []}
                 onChange={(e) =>
-                  handlePriorityChange(category.title, e.target.value)
+                  handlePriorityChange(
+                    category.title,
+                    e.target.value as string[]
+                  )
                 }
               >
-                <MenuItem value="">Selecione...</MenuItem>
                 {category.options.map((option, optionIndex) => (
                   <MenuItem key={optionIndex} value={option}>
                     {option}
@@ -119,6 +134,18 @@ const ProjectPage = () => {
           </Grid>
         ))}
       </Grid>
+
+      <div
+        style={{
+          padding: "20px",
+          width: "168%",
+        }}
+      >
+        <Typography variant="subtitle1" gutterBottom align="left">
+          Este é o seu Ranking de Prioridades:
+        </Typography>
+        <ol>{renderRanking()}</ol>
+      </div>
       <Grid
         container
         spacing={3}
@@ -130,17 +157,16 @@ const ProjectPage = () => {
             Enviar Prioridades
           </Button>
         </Grid>
+        <Grid item>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleClearPriorities}
+          >
+            Limpar Prioridades
+          </Button>
+        </Grid>
       </Grid>
-      <Typography variant="subtitle1" gutterBottom align="left">
-        Ranking de Prioridades:
-      </Typography>
-      <ol>
-        {Object.entries(priorities).map(([category, priority], index) => (
-          <li key={index}>
-            <strong>{category}:</strong> {priority}
-          </li>
-        ))}
-      </ol>
     </div>
   );
 };

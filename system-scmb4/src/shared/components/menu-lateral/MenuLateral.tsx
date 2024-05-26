@@ -81,12 +81,27 @@ export const MenuLateral: React.FC<{ children: React.ReactNode }> = ({
                 </ListItemButton>
               </Box>
 
-              <ListItemButton sx={{ mb: 2 }}>
-                <ListItemIcon>
-                  <Icon>checklist</Icon>
-                </ListItemIcon>
-                <ListItemText primary="Elencar Prioridades" />
-              </ListItemButton>
+              <Box
+                component={Link}
+                to="/formsPrioridades"
+                sx={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  "&:hover": {
+                    textDecoration: "none",
+                  },
+                  "&:focus": {
+                    textDecoration: "none",
+                  },
+                }}
+              >
+                <ListItemButton sx={{ mb: 2 }}>
+                  <ListItemIcon>
+                    <Icon>checklist</Icon>
+                  </ListItemIcon>
+                  <ListItemText primary="Elencar Prioridades" />
+                </ListItemButton>
+              </Box>
 
               <ListItemButton sx={{ mb: 2 }}>
                 <ListItemIcon>
