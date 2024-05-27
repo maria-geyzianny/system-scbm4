@@ -92,67 +92,77 @@ const ProjectPage = () => {
         backgroundPosition: "center",
       }}
     >
-      <Typography
-        style={{
-          fontSize: "2rem",
-          fontFamily: "serif",
-          color: "#4d4b4b",
-          display: "flex",
-          justifyContent: "center",
-          textAlign: "center",
-        }}
-      >
-        Organize em ordem de importância os atributos importantes para o projeto
-      </Typography>
-
-      <Grid
-        container
-        spacing={2}
+      <div
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: "1rem",
-          width: "70%",
+          justifyContent: "center",
+          alignItems: "center",
           backgroundColor: "rgba(255, 255, 255, 0.8)", // Adicione um fundo semi-transparente para melhor legibilidade do formulário
           padding: "2rem", // Adicione preenchimento para espaçamento interno
           borderRadius: "8px", // Adicione bordas arredondadas ao formulário
         }}
       >
-        {categories.map((category, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <FormControl fullWidth>
-              <InputLabel>{category.title}</InputLabel>
-              <Select
-                multiple
-                value={priorities[category.title] || []}
-                onChange={(e) =>
-                  handlePriorityChange(
-                    category.title,
-                    e.target.value as string[]
-                  )
-                }
-              >
-                {category.options.map((option, optionIndex) => (
-                  <MenuItem key={optionIndex} value={option}>
-                    {option}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-        ))}
-      </Grid>
-
-      <div
-        style={{
-          width: "70%",
-          marginBottom: "20px",
-        }}
-      >
-        <Typography variant="subtitle1" gutterBottom align="left">
-          Este é o seu Ranking de Prioridades:
+        <Typography
+          style={{
+            fontSize: "2rem",
+            fontFamily: "serif",
+            color: "#4d4b4b",
+            display: "flex",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+        >
+          Organize em ordem de importância os atributos importantes para o
+          projeto
         </Typography>
-        <ol>{renderRanking()}</ol>
+
+        <Grid
+          container
+          spacing={2}
+          style={{
+            gap: "1rem",
+            width: "70%",
+          }}
+        >
+          {categories.map((category, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <FormControl fullWidth>
+                <InputLabel>{category.title}</InputLabel>
+                <Select
+                  multiple
+                  value={priorities[category.title] || []}
+                  onChange={(e) =>
+                    handlePriorityChange(
+                      category.title,
+                      e.target.value as string[]
+                    )
+                  }
+                >
+                  {category.options.map((option, optionIndex) => (
+                    <MenuItem key={optionIndex} value={option}>
+                      {option}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+          ))}
+        </Grid>
+
+        <div
+          style={{
+            width: "70%",
+            marginBottom: "20px",
+          }}
+        >
+          <Typography variant="subtitle1" gutterBottom align="left">
+            Este é o seu Ranking de Prioridades:
+          </Typography>
+
+          <ol>{renderRanking()}</ol>
+        </div>
+        {/* addicionar footer */}
       </div>
       <Grid
         container
